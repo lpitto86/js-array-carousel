@@ -30,6 +30,11 @@ transition: transform 0.5s ease-in-out;
 
 .carousel-item {
 flex: 0 0 100%;
+display: none;  /* Nasconde tutte le immagini per default */
+}
+
+.carousel-item.visible {
+    display: block;  /* Mostra solo l'immagine con la classe 'visible' */
 }
 
 .carousel-img {
