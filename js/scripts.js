@@ -28,31 +28,27 @@ const items = document.querySelectorAll('.carousel-item');
 // Inizialmente mostra solo la prima immagine
 items[0].classList.add('visible');
 
-// Funzione per cambiare l'immagine visibile
 function showImage(index) {
     // Rimuovi la classe 'visible' da tutti gli elementi
     items.forEach(item => item.classList.remove('visible'));
 
     // Aggiungi la classe 'visible' all'elemento desiderato
     items[index].classList.add('visible');
+
+    // Calcola l'indice dell'immagine successiva
+    const nextIndex = (index + 1) % items.length;
+
+    // Controlla se l'immagine successiva è la prima
+    if (nextIndex === 0) {
+        // Aspetta un breve periodo di tempo e mostra la prima immagine
+        setTimeout(() => {
+            showImage(0);
+        }, 2000); // Cambia questo valore se vuoi regolare il tempo di attesa tra le immagini
+    }
 }
-
-// Esempio: Mostra la seconda immagine dopo 2 secondi
-setTimeout(() => {
-    showImage(1);
-}, 2000);
-
-// Funzione per cambiare l'immagine visibile
-function showImage(index) {
-      // Rimuovi la classe 'visible' da tutti gli elementi
-      items.forEach(item => item.classList.remove('visible'));
-  
-      // Aggiungi la classe 'visible' all'elemento desiderato
-      items[index].classList.add('visible');
-  }
   
   // Gestione dell'evento click sulla freccia sinistra
-  document.getElementById('arrow-left').addEventListener('click', function () {
+  document.getElementById('prevBtn').addEventListener('click', function () {
       // Trova l'indice dell'immagine attualmente visibile
       const currentIndex = Array.from(items).findIndex(item => item.classList.contains('visible'));
   
@@ -64,7 +60,7 @@ function showImage(index) {
   });
   
   // Gestione dell'evento click sulla freccia destra
-  document.getElementById('arrow-right').addEventListener('click', function () {
+  document.getElementById('nextBtn').addEventListener('click', function () {
       // Trova l'indice dell'immagine attualmente visibile
       const currentIndex = Array.from(items).findIndex(item => item.classList.contains('visible'));
   
@@ -73,9 +69,4 @@ function showImage(index) {
   
       // Mostra l'immagine successiva
       showImage(nextIndex);
-  });
-  
-  // Esempio: Mostra la seconda immagine dopo 2 secondi
-  setTimeout(() => {
-      showImage(1);
-  }, 2000);
+});

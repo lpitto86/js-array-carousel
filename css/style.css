@@ -45,3 +45,26 @@ height: auto;
 .visible {
     display: block !important;
 }
+
+#prevBtn,
+#nextBtn {
+    position: absolute;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: white;
+    z-index: 1; /* Imposta un valore di z-index maggiore */
+}
+
+#prevBtn {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#nextBtn {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
